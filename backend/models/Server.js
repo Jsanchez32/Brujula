@@ -1,11 +1,14 @@
 import express from "express";
 import cors from "cors";
+import reservacionesRouter from "../routes/reservaciones.routes.js"
 
 class Server {
     constructor(){
         this.app = express();
         this.app.use(express.json());
         this.port = process.env.PORT;
+
+        this.reservacionPath = "/reservacion";
 
         //Middlewares//
         this.middlewares();
@@ -19,7 +22,7 @@ class Server {
     };
 
     routes(){
-
+        this.app.use(this.reservacionPath,reservacionesRouter);
     };
 
     listen(){
