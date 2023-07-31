@@ -1,6 +1,8 @@
 import express from "express";
 import cors from "cors";
-import reservacionesRouter from "../routes/reservaciones.routes.js"
+import reservacionesRouter from "../routes/reservaciones.routes.js";
+import usuariosRouter from "../routes/usuarios.routes.js";
+import loginRouter from "../routes/login.routes.js";
 
 class Server {
     constructor(){
@@ -9,6 +11,8 @@ class Server {
         this.port = process.env.PORT;
 
         this.reservacionPath = "/reservacion";
+        this.usuarioPath = "/usuario";
+        this.loginPath = "/login";
 
         //Middlewares//
         this.middlewares();
@@ -23,6 +27,8 @@ class Server {
 
     routes(){
         this.app.use(this.reservacionPath,reservacionesRouter);
+        this.app.use(this.usuarioPath,usuariosRouter);
+        this.app.use(this.loginPath,loginRouter);
     };
 
     listen(){

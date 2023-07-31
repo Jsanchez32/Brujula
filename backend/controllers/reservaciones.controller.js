@@ -10,14 +10,18 @@ const getReservacion = async (req,res)=>{
     }
 }
 
-
-
-
-
-
-
-
+const addReservation = async(req,res)=>{
+    const reservations = new Reservaciones(req.body);
+    try {
+        const newReservation = await reservations.save();
+        res.send(newReservation);
+    } catch (error) {
+        req.status(404);
+        res.send({error:'No funca'});
+    }
+}
 
 export {
-    getReservacion
+    getReservacion,
+    addReservation
 }
