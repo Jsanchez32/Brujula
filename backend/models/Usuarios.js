@@ -21,6 +21,10 @@ const usuariosSchema = mongoose.Schema({
         require: true,
         trim:true,
         default: 'user'
+    },
+    estado:{
+        type:Boolean,
+        default: true
     }
 })
 

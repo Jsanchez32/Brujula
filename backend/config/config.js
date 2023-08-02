@@ -6,7 +6,7 @@ const conectarDB = async ()=>{
             useNewUrlParser:true,
             useUnifiedTopology:true
         })
-        const url = `Conectado a mongoDB en server ${connectionDB.connection.host} - en puerto ${connectionDB.connection.port}`
+        const url = `DB CONNECT`
         console.log(url);
     } catch (error) {
         console.log(error.message);

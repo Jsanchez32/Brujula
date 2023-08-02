@@ -1,6 +1,7 @@
 import {response} from "express";
 import Usuarios from "../models/Usuarios.js";
 import bcryptjs from "bcryptjs";
+import {generateJWT} from "../helpers/generateJWT.js"
 
 const login = async(req,res=response)=>{
     const {email,password} = req.body;
@@ -12,6 +13,14 @@ const login = async(req,res=response)=>{
                 msg: "El email es incorrecto"
             })
         }
+
+        //Verificar si el estado esta activo//
+        if (!usuario.estado){
+            return res.status(400).json({
+                msg:"Estado Inactivo"
+            })
+        }
+        
         //Verificar contraseña//
         const validatePsw = bcryptjs.compareSync(password,usuario.password);
         if(!validatePsw){
@@ -19,9 +28,14 @@ const login = async(req,res=response)=>{
                 msg: "Contraseña incorrecta"
             })
         }
+
+        const token = await generateJWT(usuario.id)
+
         res.json({
-            msg:'Sesion iniciada'
+            usuario,
+            token
         })
+        
     } catch (error) {
         res.json({
             msg: "No funca"
