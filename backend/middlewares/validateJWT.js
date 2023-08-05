@@ -3,6 +3,7 @@ import jsonwebtoken from "jsonwebtoken";
 import Usuarios from "../models/Usuarios.js";
 
 const validateJWT = async(req=request,res=response,next)=>{
+    
     const token = req.header('apiToken');
 
     if(!token){

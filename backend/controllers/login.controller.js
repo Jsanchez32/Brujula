@@ -3,15 +3,15 @@ import Usuarios from "../models/Usuarios.js";
 import bcryptjs from "bcryptjs";
 import {generateJWT} from "../helpers/generateJWT.js"
 
-const login = async(req,res=response)=>{
+const login = async (req, res=response)=>{
     const {email,password} = req.body;
     try {
         //Verificar email//
         const usuario = await Usuarios.findOne({email});
         if(!usuario){
             return res.status(400).json({
-                msg: "El email es incorrecto"
-            })
+                msg: "El email es incorrecto",
+          })
         }
 
         //Verificar si el estado esta activo//
@@ -28,14 +28,13 @@ const login = async(req,res=response)=>{
                 msg: "Contraseña incorrecta"
             })
         }
-
         const token = await generateJWT(usuario.id)
 
         res.json({
             usuario,
             token
-        })
-        
+        })  
+
     } catch (error) {
         res.json({
             msg: "No funca"

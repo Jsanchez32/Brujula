@@ -1,10 +1,12 @@
 import jsonwebtoken from "jsonwebtoken";
 
 const generateJWT = (uid= '')=>{
+
     return new Promise ((resolve,reject)=>{
+        
         const payload = {uid};
 
-        jsonwebtoken.sign(payload,process.env.SECRET_OR_PRIVATE_KEY),{
+        jsonwebtoken.sign(payload,process.env.SECRET_OR_PRIVATE_KEY,{
             expiresIn : '2h'
         },(err,token)=>{
             if(err){
@@ -14,7 +16,7 @@ const generateJWT = (uid= '')=>{
             else{
                 resolve(token);
             }
-        }
+        })
     })
 }
 

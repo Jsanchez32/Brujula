@@ -21,8 +21,8 @@ const getUsers = async (req,res)=>{
 
 
 const registerUsers = async (req,res)=>{
-    const {email,username,password} = req.body;
-    const usuario = new Usuarios({email,username,password});
+    const {email,username,password,rol} = req.body;
+    const usuario = new Usuarios({email,username,password,rol});
 
     //Encriptar contraseña//
     const salt = bcryptjs.genSaltSync();

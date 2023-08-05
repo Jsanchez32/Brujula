@@ -4,7 +4,7 @@ import { validateDocuments } from "../middlewares/validate.documents.js";
 import { registerUsers,deleteUsers,getUsers,putUsers} from "../controllers/usuarios.controllers.js";
 import {validateJWT} from "../middlewares/validateJWT.js";
 import {isAdminRole} from "../middlewares/validate.role.js";
-import { emailExist,userExistsById } from "../helpers/db.validator.js";
+import { emailExist,isValidRole,userExistsById } from "../helpers/db.validator.js";
 
 const router = Router();
 
@@ -14,6 +14,7 @@ router.post("/add",[
     check('password','El password debe ser min 8 letras').isLength({min:8}),
     check('email','El correo no es valido').isEmail(),
     check('email').custom(emailExist),
+    check('rol').custom(isValidRole),
     validateDocuments
 ],registerUsers);
 

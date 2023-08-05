@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+const {Schema} = mongoose;
 const reservacionesSchema = mongoose.Schema({
     nombre:{
         type:String,
@@ -22,7 +22,7 @@ const reservacionesSchema = mongoose.Schema({
         trim:true
     },
     cantidadPersonas:{
-        type:String,
+        type:Number,
         require:true,
         trim:true
     },
@@ -30,6 +30,15 @@ const reservacionesSchema = mongoose.Schema({
         type:String,
         require:true,
         trim:true
+    },
+    estado:{
+        type: Boolean,
+        default: true
+    },
+    usuario:{
+        type: Schema.Types.ObjectId,
+        ref: 'usuarios',
+        required: true
     }
 
 });

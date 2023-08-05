@@ -1,22 +1,21 @@
-const isAdminRole = (req,res,next)=>{
+const isAdminRole = ( req, res, next ) => {
 
-    if(!req.usuario){
-        return res.status(404).json({
-            msg:'Se requiere verificar el rol'
-        })
-    }
+    if ( !req.usuarios ) {
+       return res.status(500).json({
+           msg: 'Se quiere verificar el role sin validar el token primero'
+       });
+   } 
 
-    const {rol,username} = req.usuario;
-    
-    if(rol !='admin'){
-        return res.status(404).json({
-            msg:`${username} no es administrador - No se puede validar la accion`
-        })
-    }
-    next();
+   const { rol, username } = req.usuarios;
+   
+   if ( rol !== 'admin' ) {
+       return res.status(401).json({
+           msg: `${ username } no es administrador - No puede hacer esto`
+       });
+   }
+
+   next();
 }
 
 
-export {
-    isAdminRole
-}
+export {isAdminRole}

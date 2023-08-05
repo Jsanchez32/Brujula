@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { login } from "../controllers/login.controller.js";
+import  {login} from "../controllers/login.controller.js";
 import {check} from "express-validator";
 import {validateDocuments} from "../middlewares/validate.documents.js";
 

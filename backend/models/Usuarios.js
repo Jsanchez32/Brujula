@@ -1,25 +1,21 @@
 import mongoose from "mongoose";
 
-const usuariosSchema = mongoose.Schema({
+const UsuariosSchema = mongoose.Schema({
     email:{
         type: String,
-        require: true,
-        trim: true,
+        require: true
     },
     username:{
         type: String,
-        require: true,
-        trim: true,
+        require: true
     },
     password:{
         type: String,
-        require: true,
-        trim:true
+        require: true
     },
     rol:{
         type: String,
         require: true,
-        trim:true,
         default: 'user'
     },
     estado:{
@@ -28,5 +24,5 @@ const usuariosSchema = mongoose.Schema({
     }
 })
 
-const Usuarios = mongoose.model('usuarios',usuariosSchema);
+const Usuarios = mongoose.model('usuarios',UsuariosSchema);
 export default Usuarios;
