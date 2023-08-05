@@ -1,0 +1,30 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-image: linear-gradient(to right, #EEC458, #F37F14);
+    height: 100vh;
+}
+
+.logo{
+    width: 25rem;
+    height: auto;
+}
+
+.form-login{
+    background-image: linear-gradient(to top, #EEC458, #F37F14);
+    border-radius: 1rem;
+    border: solid 2px black;
+    width: 30rem;
+    padding: 1.5rem;
+}
+
+.main{
+    display: flex;
+    justify-content: center;
+    gap: 8rem;
+    align-items: center;
+    height: 100vh;
+}
