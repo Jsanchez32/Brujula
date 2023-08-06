@@ -11,7 +11,10 @@ import { reservationExistById } from "../helpers/db.validator.js";
 const router = express.Router();
 
 router.get("/",getReservacion);
-router.get("/user",getReservacionUser);
+router.get("/user",[
+    validateJWT,
+    validateDocuments
+],getReservacionUser);
 router.post("/",[
     validateJWT,
     check('nombre','El nombre es obligatorio').not().isEmpty(),

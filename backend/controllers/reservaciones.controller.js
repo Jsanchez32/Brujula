@@ -1,6 +1,7 @@
 import nodemailer from 'nodemailer'
 import Reservaciones from "../models/Reservaciones.js";
 import { sendEmail } from './mailer.controller.js';
+import Deportes from '../models/Deportes.js';
 
 const getReservacion = async (req,res)=>{
     try {
@@ -29,9 +30,10 @@ const getReservacionUser = async (req,res)=>{
 
         const [total, reservacion] = await Promise.all([
             Reservaciones.countDocuments(query),
-            Reservaciones.find(query,{usuario:req.usuario})
+            Reservaciones.find({usuario: req.usuarios._id})
                 .populate('usuario',['email'])
         ])
+        console.log(req.usuarios._id);
         res.json({
             total,
             reservacion
@@ -47,20 +49,24 @@ const getReservacionUser = async (req,res)=>{
 const addReservation = async (req, res) => {
     try {
         const { nombre, telefono, correo, fecha, cantidadPersonas, plan, estado } = req.body;
+        const planPrueba = await Deportes.findOne({ deporte: plan });
+        const precioPlan = planPrueba.precio;
+        const totalNuevo = cantidadPersonas * precioPlan;
+
         const data = {
             nombre,
             telefono,
             correo,
             fecha,
-            cantidadPersonas,
+            cantidadPersonas: cantidadPersonas,
             plan,
             estado,
+            total: totalNuevo,
             usuario: req.usuarios._id
         };
-        console.log(data);
+
         const reservacion = new Reservaciones(data);
         await reservacion.save();
-
         await sendEmail(correo, nombre, fecha, plan);
 
         res.json({
@@ -69,10 +75,9 @@ const addReservation = async (req, res) => {
         });
     } catch (error) {
         console.log(error);
+        res.status(500).json({ msg: 'Error en el servidor' });
     }
 };
-
-
 
 const putReservation = async (req,res)=>{
     try {

@@ -11,6 +11,11 @@ const deportesSchema = mongoose.Schema({
         require:true,
         trim:true    
     },
+    precio:{
+        type:Number,
+        require:true,
+        trim:true    
+    },
     categoria:{
         type: Schema.Types.ObjectId,
         ref: 'categorias',

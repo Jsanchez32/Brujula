@@ -40,7 +40,7 @@ const searchReservations = async (criterio = '',res = response)=>{
 
     const regex = new RegExp(criterio, 'i');
     const reservaciones = await Reservaciones.find({
-        $or: [{nombre:regex},{correo:regex}],
+        $or: [{nombre:regex},{correo:regex},{plan:regex}],
         $and: [{estado:true}]
     })
 

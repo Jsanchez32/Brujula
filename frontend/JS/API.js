@@ -65,9 +65,21 @@ const addReservacion = async(datos)=>{
         console.log(error);
     }
 }
+
+const getDeportesCategoria = async(categoriaId)=>{
+    try {
+        const response = await fetch(`${url}/deportes/categoria/${categoriaId}`)
+        const result = response.json();
+        return result
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export {
     login,
     register,
     getDeportes,
-    addReservacion
+    addReservacion,
+    getDeportesCategoria
 }

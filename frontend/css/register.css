@@ -17,10 +17,10 @@ body{
     height: auto;
 }
 
-.form-login h1{
+.form-Register h1{
     font-size: 2.5rem;
 }
-.form-login h2{
+.form-Register h2{
     font-size: 2rem;
 }
 .forgotPassword{
@@ -29,15 +29,8 @@ body{
     padding-top: 3px;
     text-decoration: none;
 }
-.main{
-    display: flex;
-    justify-content: center;
-    gap: 8rem;
-    align-items: center;
-    height: 100vh;
-}
 
-.form-login{
+.form-register{
     background-image: linear-gradient(to top, #EEC458, #F37F14);
     border-radius: 1rem;
     border: solid 1.9px black;
@@ -46,6 +39,13 @@ body{
     height: 28rem;
 }
 
+.main{
+    display: flex;
+    justify-content: center;
+    gap: 8rem;
+    align-items: center;
+    height: 100vh;
+}
 
 .inputDato{
     flex-direction: column;
@@ -67,10 +67,10 @@ body{
     padding-left: 1rem;
 }
 
-#formularioLogin{
+#formularioRegister{
     padding-top: 1.5rem;
 }
-.btnLogin{
+.btnRegister{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -86,7 +86,7 @@ body{
     justify-content: center;
     align-items: center;
 }
-.btnLogin button{
+.btnRegister button{
     border: none;
     background-image: linear-gradient(to right, #EB9734, #ED6565);
     width: 24rem;

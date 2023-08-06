@@ -14,21 +14,22 @@
     
         <div class="form-login">
             <h1>Login</h1>
+            <br>
             <h2>Welcome to Brujula</h2>
-
             <form action="" id="formularioLogin" method="post">
-                <div>
+                <div class="inputDato">
                     <label for="">Email</label>
-                    <input type="email" id="emailLogin" placeholder="Enter your Email">
+                    <input type="email" id="emailLogin" placeholder="Enter your Email" required>
                 </div>
-                <div>
+                <div class="inputDato">
                     <label for="">Password</label>
-                    <input type="password" id="passwordLogin" placeholder="Enter your Password">
-                    <p>Forgot password?</p>
+                    <input type="password" id="passwordLogin" placeholder="Enter your Password" required>
+                    <a href="#" class="forgotPassword">Forgot password?</a>
                 </div>
-
-                <button type="submit">Login</button>
-                <p>New to login?, <a href="../login/register.html">Register</a> Here</p>
+                <div class="btnLogin">
+                    <button type="submit">Login</button>
+                </div>
+                <p class="register">New to login? <a href="../login/register.html">Register Here</a> </p>
             </form>
         </div>
     </div>

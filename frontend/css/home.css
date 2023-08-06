@@ -1,0 +1,64 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-image: linear-gradient(to right, #EEC458, #F37F14);
+}
+
+#raftingContainer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    border: none;
+}
+
+#torrentismoContainer,#espeleologiaContainer,#parapenteContainer{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    border: none;
+}
+
+
+.card{
+    border: none;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 2rem;
+    transition: all ease 0.5s;
+}
+
+.card:hover{
+    transform: scale(1.05);
+}
+
+.card-body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: justify;
+}
+.masInformacion{
+    background-color: black;
+    color: white;
+    border-radius: 4rem;
+    height: 1.5rem;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 7rem;
+    font-weight: bold;
+}
+
+.masInformacion:hover{
+    background-color: gray
+}
+.card img{
+    height: 12rem;
+}

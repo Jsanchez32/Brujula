@@ -39,6 +39,11 @@ const reservacionesSchema = mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: 'usuarios',
         required: true
+    },
+    total:{
+        type: Number,
+        require:true,
+        ref: 'deportes'
     }
 
 });
