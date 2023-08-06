@@ -76,10 +76,20 @@ const getDeportesCategoria = async(categoriaId)=>{
     }
 }
 
+const reservacionesUser = async()=>{
+    try {
+        const response = await fetch(`${url}/reservaciones/user}`)
+        const result = response.json();
+        return result
+    } catch (error) {
+        console.log(error);
+    }
+}
 export {
     login,
     register,
     getDeportes,
     addReservacion,
-    getDeportesCategoria
+    reservacionesUser,
+    getDeportesCategoria,
 }

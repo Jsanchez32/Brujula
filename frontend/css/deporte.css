@@ -1,0 +1,107 @@
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-image: linear-gradient(to right, #EEC458, #F37F14);
+}
+
+#informacion{
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+}
+
+#informacion h1{
+    font-size:1.7rem ;
+    margin: 1.5rem 1.5rem 0 1.5rem;
+}
+
+#informacion h2{
+    font-size: 1.4rem;
+    margin: 1.5rem;
+}
+
+#informacion p {
+    font-size: 22px;
+    padding: 0 1.5rem;
+    text-align: justify;
+}
+
+
+#informacion li{
+    font-size: 22px;
+    padding: 0.3rem 1.5rem;
+}
+
+.checklist li::before {
+    content: "✓"; 
+    margin-right: 10px; 
+    color: rgb(0, 0, 0); 
+    font-weight: bolder;
+}
+
+#programa{
+    display: flex;
+    flex-direction: column;
+    border-radius: 2rem;
+    width: 30;
+    background-color: #F3C9A1;
+    margin-left: 5rem;
+    height: 23rem;
+}
+
+#sobra{
+    width:20% ;
+}
+#programa h3{
+    font-size:1.2rem ;
+    margin: 1rem 1.5rem 0 1.5rem;
+}
+
+#programa ul{
+    list-style: none;
+}
+#programa li{
+    font-size: 22px;
+    padding: 0.3rem 1.5rem;
+    margin-top: 0.8rem;
+}
+
+#programaPadre{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 35%;
+}
+
+#reservar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+#reservar button{
+    width: 13rem;
+    margin: 2rem 0 0 4.2rem;
+    font-size: 1.7rem;
+    height: 2.7rem;
+    border-radius: 1rem;
+    border: none;
+    background-color: #F37F14;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+#main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 7rem;
+}
+

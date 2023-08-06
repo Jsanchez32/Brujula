@@ -15,6 +15,7 @@ router.get("/user",[
     validateJWT,
     validateDocuments
 ],getReservacionUser);
+
 router.post("/",[
     validateJWT,
     check('nombre','El nombre es obligatorio').not().isEmpty(),

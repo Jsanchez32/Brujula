@@ -1,0 +1,45 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-image: linear-gradient(to right, #EEC458, #F37F14);
+}
+
+.carousel-inner img{
+    height: 23rem;
+    width: auto;
+    border-radius: 1rem;
+}
+
+#carouselExampleAutoplaying{
+    width: 30rem;
+    height: auto;
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reservar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reservar button{
+    background-color: #F37F14;
+    color: black;
+    border: none;
+    width: 10rem;
+    font-weight: bolder;
+    font-size: 1.2rem;
+}
+
+.reservar button:hover{
+    background-color: #EEC458;
+    color: black;
+}

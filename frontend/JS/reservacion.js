@@ -33,5 +33,11 @@ async function insertReservacion(e){
         cantidadPersonas,
         plan
     }
-    return addReservacion(datos);
+    addReservacion(datos);
+
+    await Swal.fire({
+        icon: 'success',
+        title: 'Reservacion Registrada',
+      })
+    window.location.href = '../reservaciones/profile.html';
 }

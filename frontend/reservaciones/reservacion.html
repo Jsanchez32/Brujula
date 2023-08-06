@@ -4,38 +4,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservaciones</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/reservaciones.css">
 </head>
+<header class="header">
+    <div class="logo">
+        <a href="../home/home.html">
+            <img src="../img/logo.png" alt="Logo de la marca" >
+        </a>
+    </div>
+    <nav>
+       <ul class="nav-links">
+            <li><a href="../deportes/torrentismo.html">Torrentismo</a></li>
+            <li><a href="../deportes/rafting.html">Rafting</a></li>
+            <li><a href="../deportes/parapente.html">Parapente</a></li>
+            <li><a href="../deportes/espeleologia.html">Espeleologia</a></li>
+       </ul>            
+    </nav>
+    <div class="logo">
+        <a href="../home/home.html"></a>
+        <img src="../img/userLogo.png" alt="Logo de la marca" >
+    </div>
+</header>
+
 <body>
     <h1>Reservacion</h1>
-    <form action="" method="post" id="formReservacion">
-        <div>
-            <label for="">Nombre</label>
-            <input type="text" id="nombre">
+    <div class="container">
+        <div class="formulario">
+            <form id="formReservacion" method="post" >
+                <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" aria-describedby="emailHelp" required>
+                </div>
+                <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Correo</label>
+                <input type="email" class="form-control" id="correo" required>
+                </div>
+                <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Telefono</label>
+                <input type="number" class="form-control" id="telefono" required>
+                </div>
+                <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Deporte</label>
+                <select name="" id="plan" class="form-select" required>
+                    <option value="seleccione">Seleccione</option>
+                </select>
+                </div>
+                <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Fecha</label>
+                <input type="date" class="form-control" id="fecha" required>
+                </div>
+                <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Hora</label>
+                <input type="time" class="form-control" id="hora" required>
+                </div>
+                <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Cantidad Personas</label>
+                <input type="number" class="form-control" id="cantidadPersonas" required>
+                </div>
+                <div class="reservar">
+                    <button type="submit" class="btn btn-primary">Reservar</button>
+                </div>
+            </form>
         </div>
-        <div>
-            <label for="">Telefono</label>
-            <input type="number" id="telefono">
-        </div>
-        <div>
-            <label for="">Correo</label>
-            <input type="email" id="correo">
-        </div>
-        <div>
-            <label for="">Fecha</label>
-            <input type="date" id="fecha">
-        </div>
-        <div>
-            <label for="">Cantidad Personas</label>
-            <input type="number" id="cantidadPersonas">
-        </div>
-        <div>
-            <label for="">Plan</label>
-            <select name="" id="plan">
-                <option value="seleccione">Seleccione</option>
-            </select>
-        </div>
-        <button type="submit">Reservar</button>
-    </form>
+
+        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="../img/caminataJuanCuri.jpg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="../img/cuevaVaca.jpg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="../img/rioFonce.jpg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="../img/torrentismoJuanCuri.jpg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="../img/parapenteChicamocha.jpg" class="d-block w-100" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+    </div>
 </body>
 <script type="module" src="../JS/reservacion.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </html>
