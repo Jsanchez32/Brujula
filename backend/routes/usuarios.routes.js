@@ -14,7 +14,6 @@ router.post("/add",[
     check('password','El password debe ser min 8 letras').isLength({min:8}),
     check('email','El correo no es valido').isEmail(),
     check('email').custom(emailExist),
-    check('rol').custom(isValidRole),
     validateDocuments
 ],registerUsers);
 

@@ -4,6 +4,7 @@ import reservacionesRouter from "../routes/reservaciones.routes.js";
 import usuariosRouter from "../routes/usuarios.routes.js";
 import loginRouter from "../routes/login.routes.js";
 import searchRouter from "../routes/search.routes.js";
+import deportesRouter from "../routes/deportes.routes.js";
 
 class Server {
     constructor(){
@@ -15,6 +16,7 @@ class Server {
         this.usuarioPath = "/usuarios";
         this.loginPath = "/login";
         this.searchPath = "/search";
+        this.deportesPath = "/deportes";
 
         //Middlewares//
         this.middlewares();
@@ -32,6 +34,7 @@ class Server {
         this.app.use(this.usuarioPath,usuariosRouter);
         this.app.use(this.loginPath,loginRouter);
         this.app.use(this.searchPath, searchRouter);
+        this.app.use(this.deportesPath, deportesRouter);
     };
 
     listen(){

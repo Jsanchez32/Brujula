@@ -15,7 +15,7 @@ const getUsers = async (req,res)=>{
 
     res.json({
         total,
-        usuarios
+        usuarios,
     })
 }
 
@@ -32,7 +32,8 @@ const registerUsers = async (req,res)=>{
     //Guardar datos//
     res.json({
         "msg":"post-user",
-        usuario
+        usuario,
+        success:true,
     });
 }
 
