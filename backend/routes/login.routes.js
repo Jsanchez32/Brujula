@@ -1,7 +1,8 @@
 import { Router } from "express";
-import  {login} from "../controllers/login.controller.js";
+import  {login,verifyLogin} from "../controllers/login.controller.js";
 import {check} from "express-validator";
 import {validateDocuments} from "../middlewares/validate.documents.js";
+import {validateJWT} from "../middlewares/validateJWT.js"
 
 const router = Router();
 
@@ -11,5 +12,9 @@ router.post('/',[
     validateDocuments
 ],login)
 
+router.post('/verify',[
+    validateJWT,
+    validateDocuments,
+],verifyLogin)
 
 export default router;

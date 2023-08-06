@@ -1,6 +1,12 @@
 const url = 'http://localhost:5000'
 
 
+const token = localStorage.getItem('token');
+const headers = {
+    apiToken: `${token}`,
+    'Content-Type': 'application/json'
+}
+
 const login = async (datos) => {
     try {
         const response = await fetch(`${url}/login`, {
@@ -50,12 +56,6 @@ const getDeportes = async()=>{
 
 const addReservacion = async(datos)=>{
     try {
-        const token = localStorage.getItem('token');
-        const headers = {
-            apiToken: `${token}`,
-            'Content-Type': 'application/json'
-        }
-        
             await fetch(`${url}/reservaciones`, {
             method: 'post',
             body: JSON.stringify(datos),
@@ -68,6 +68,7 @@ const addReservacion = async(datos)=>{
 
 const getDeportesCategoria = async(categoriaId)=>{
     try {
+        
         const response = await fetch(`${url}/deportes/categoria/${categoriaId}`)
         const result = response.json();
         return result
@@ -78,15 +79,31 @@ const getDeportesCategoria = async(categoriaId)=>{
 
 const reservacionesUser = async()=>{
     try {
-        const response = await fetch(`${url}/reservaciones/user}`)
+        const response = await fetch(`${url}/reservaciones/user`,{
+            headers:headers
+        })
         const result = response.json();
         return result
     } catch (error) {
         console.log(error);
     }
 }
+
+const verify = async()=>{
+    try {
+        const token = await fetch(`${url}/login/verify`,{
+            method: 'POST',
+            headers:headers
+        })
+
+        return await token.json();
+    } catch (error) {
+        console.log(error);
+    }
+}
 export {
     login,
+    verify,
     register,
     getDeportes,
     addReservacion,

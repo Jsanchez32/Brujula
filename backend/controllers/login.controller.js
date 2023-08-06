@@ -43,6 +43,17 @@
         }
     }
 
+
+    const verifyLogin = async (req,res)=>{
+        try {
+            res.json({
+                validToken: true
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }
     export {
-        login
+        login,  
+        verifyLogin
     }

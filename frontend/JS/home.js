@@ -30,3 +30,16 @@ async function mostrarDeportes(containerId, categoriaId) {
         `;
     });
 }
+
+const logOut = document.querySelector('.logOut');
+logOut.addEventListener('click',cerrarSesion);
+
+function cerrarSesion(){
+    
+    localStorage.clear();
+    Swal.fire({
+        icon: 'success',
+        title: 'Iniciando Sesion',
+      })
+    window.location.href='../login/login.html';
+}
