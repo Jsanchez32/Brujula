@@ -2,6 +2,20 @@ import Deportes from "../models/Deportes.js"
 import Categorias from "../models/Categorias.js"
 import mongoose from "mongoose";
 
+
+const getDeportes = async (req, res) => {
+    try {
+        const deportes = await Deportes.find()
+            .populate('categoria', 'categoria');
+        res.json({
+            deportes
+        });
+    } catch (error) {
+        res.status(500).json({
+            msg: error.message
+        });
+    }
+};
 const getRafting = async (req, res) => {
     try {
         const raftingId = new mongoose.Types.ObjectId('64ceed4aed3fcc0147f8f8b1');
@@ -59,22 +73,6 @@ const getEspeleologia = async (req, res) => {
     }
 };
 
-const getCategorias = async (req,res)=>{
-    try {
-        const [total, categoria] = await Promise.all([
-            Categorias.find()
-        ])
-        res.json({
-            total,
-            categoria
-        })
-    } catch (error) {
-        res.status(404),
-        res.json({
-            msg: error.message
-        })
-    }
-}
 
 
 export {
@@ -82,5 +80,5 @@ export {
     getEspeleologia,
     getRafting,
     getTorrentismo,
-    getCategorias
+    getDeportes
 }

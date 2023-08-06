@@ -38,11 +38,29 @@ const register = async (datos) => {
     }
 };
 
-const getDeportes = async ()=>{
+const getDeportes = async()=>{
     try {
-        const datos = await fetch(`${url}/deportes`)
-        const result  = datos.json();
-        return result
+        const response = await fetch(`${url}/deportes/all`)   
+        const result = response.json();
+        return result     
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+const addReservacion = async(datos)=>{
+    try {
+        const token = localStorage.getItem('token');
+        const headers = {
+            apiToken: `${token}`,
+            'Content-Type': 'application/json'
+        }
+        
+            await fetch(`${url}/reservaciones`, {
+            method: 'post',
+            body: JSON.stringify(datos),
+            headers: headers
+        });
     } catch (error) {
         console.log(error);
     }
@@ -50,5 +68,6 @@ const getDeportes = async ()=>{
 export {
     login,
     register,
-    getDeportes
+    getDeportes,
+    addReservacion
 }

@@ -1,4 +1,6 @@
+import nodemailer from 'nodemailer'
 import Reservaciones from "../models/Reservaciones.js";
+import { sendEmail } from './mailer.controller.js';
 
 const getReservacion = async (req,res)=>{
     try {
@@ -21,9 +23,30 @@ const getReservacion = async (req,res)=>{
     }
 }
 
-const addReservation = async(req,res)=>{
+const getReservacionUser = async (req,res)=>{
     try {
-        const {nombre,telefono,correo,fecha,cantidadPersonas,plan,estado} = req.body
+        const query = {estado:true}
+
+        const [total, reservacion] = await Promise.all([
+            Reservaciones.countDocuments(query),
+            Reservaciones.find(query,{usuario:req.usuario})
+                .populate('usuario',['email'])
+        ])
+        res.json({
+            total,
+            reservacion
+        })
+    } catch (error) {
+        res.status(404),
+        res.json({
+            msg: error.message
+        })
+    }
+}
+
+const addReservation = async (req, res) => {
+    try {
+        const { nombre, telefono, correo, fecha, cantidadPersonas, plan, estado } = req.body;
         const data = {
             nombre,
             telefono,
@@ -33,20 +56,23 @@ const addReservation = async(req,res)=>{
             plan,
             estado,
             usuario: req.usuarios._id
-        }
+        };
         console.log(data);
         const reservacion = new Reservaciones(data);
         await reservacion.save();
-    
+
+        await sendEmail(correo, nombre, fecha, plan);
+
         res.json({
-            msg:'Yes',
+            msg: 'Yes',
             reservacion
         });
     } catch (error) {
-        res.status(404);
-        res.send({error:'No funca'});
+        console.log(error);
     }
-}
+};
+
+
 
 const putReservation = async (req,res)=>{
     try {
@@ -77,5 +103,6 @@ export {
     getReservacion,
     addReservation,
     delReservation,
-    putReservation
+    putReservation,
+    getReservacionUser
 }

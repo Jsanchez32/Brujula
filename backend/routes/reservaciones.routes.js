@@ -1,17 +1,17 @@
 import express from "express";
-import { getReservacion, delReservation, putReservation, addReservation } from "../controllers/reservaciones.controller.js";
+import { getReservacion, delReservation, putReservation, getReservacionUser,addReservation} from "../controllers/reservaciones.controller.js";
 import { check } from "express-validator";
 import { validateDocuments } from "../middlewares/validate.documents.js";
 import { isAdminRole } from "../middlewares/validate.role.js";
 import { validateJWT } from "../middlewares/validateJWT.js";
 import { isValidObjectId } from "mongoose";
 import { reservationExistById } from "../helpers/db.validator.js";
-import { sendEmail } from "../controllers/mailer.controller.js";
 
 
 const router = express.Router();
 
 router.get("/",getReservacion);
+router.get("/user",getReservacionUser);
 router.post("/",[
     validateJWT,
     check('nombre','El nombre es obligatorio').not().isEmpty(),
@@ -22,7 +22,8 @@ router.post("/",[
     check('cantidadPersonas','La cantidad de personas es obligatorio').not().isEmpty(),
     check('plan','El plan es obligatorio').not().isEmpty(),
     validateDocuments
-],sendEmail,addReservation);
+],addReservation);
+
 
 router.delete('/:id',[
     validateJWT,
