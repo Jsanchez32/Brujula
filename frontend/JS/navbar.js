@@ -1,5 +1,6 @@
-addEventListener('DOMContentLoaded',header)
+import { admin } from "./API.js";
 
+addEventListener('DOMContentLoaded',header)
 
 const navBar = document.querySelector('header');
 async function header (){
@@ -20,7 +21,7 @@ async function header (){
             </nav>
         <div class="logo">
             <a href="../home/home.html"></a>
-            <img src="../img/userLogo.png" alt="Logo de la marca" >
+            <img class="profile" src="../img/userLogo.png" alt="Logo de la marca" >
         </div>
         <div class="logOut">
             <button class="btn btn-danger logOut">Log Out</button>
@@ -30,9 +31,10 @@ async function header (){
 
 
 
+
 navBar.addEventListener('click',cerrarSesion);
 
-function cerrarSesion(e){
+async function cerrarSesion(e){
     e.preventDefault();
     if(e.target.classList.contains('logOut')){
         localStorage.clear();
@@ -55,4 +57,17 @@ function cerrarSesion(e){
     else if(e.target.classList.contains('espeleologia')){
         window.location.href='../deportes/espeleologia.html'
     }
+
+
+    if(e.target.classList.contains('profile')){
+        const response = await admin();
+            if (response.success) {
+                window.location.href='../administracion/admin.html'
+            }
+        else{
+            window.location.href='../reservaciones/profile.html'
+        }
+    }
+
+
 }

@@ -24,6 +24,7 @@ async function insertReservacion(e){
     const fecha = document.querySelector('#fecha').value;
     const cantidadPersonas = document.querySelector('#cantidadPersonas').value;
     const plan = document.querySelector('#plan').value;
+    const hora = document.querySelector('#hora').value;
 
     const datos={
         nombre,
@@ -31,8 +32,11 @@ async function insertReservacion(e){
         correo,
         fecha,
         cantidadPersonas,
-        plan
+        plan,
+        hora
     }
+    console.log(hora);
+    console.log(datos);
     addReservacion(datos);
 
     await Swal.fire({

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import  {login,verifyLogin} from "../controllers/login.controller.js";
+import  {login,validateAdmin,verifyLogin} from "../controllers/login.controller.js";
 import {check} from "express-validator";
 import {validateDocuments} from "../middlewares/validate.documents.js";
 import {validateJWT} from "../middlewares/validateJWT.js"
@@ -16,5 +16,10 @@ router.post('/verify',[
     validateJWT,
     validateDocuments,
 ],verifyLogin)
+
+router.post('/rol',[
+    validateJWT,
+    validateAdmin
+],validateAdmin)
 
 export default router;

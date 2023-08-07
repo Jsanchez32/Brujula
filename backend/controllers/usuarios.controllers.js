@@ -63,9 +63,11 @@ const putUsers = async (req,res)=>{
 }
 
 
+
+
 export {
     registerUsers,
     deleteUsers,
     getUsers,
-    putUsers
+    putUsers,
 }

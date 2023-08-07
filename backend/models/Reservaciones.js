@@ -21,6 +21,11 @@ const reservacionesSchema = mongoose.Schema({
         require:true,
         trim:true
     },
+    hora:{
+        type:String,
+        require:true,
+        trim:true
+    },
     cantidadPersonas:{
         type:Number,
         require:true,

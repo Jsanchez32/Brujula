@@ -83,9 +83,62 @@ const reservacionesUser = async()=>{
             headers:headers
         })
         const result = response.json();
-        return result
+        return result;
     } catch (error) {
         console.log(error);
+    }
+}
+
+const getReservaciones = async()=>{
+    try {
+        const response = await fetch(`${url}/reservaciones`);
+        const result = response.json();
+        return result;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+const putReservation = async(dato,id)=>{
+    try {
+        await fetch(`${url}/reservaciones/${id}`,{
+            method:'PUT',
+            body:JSON.stringify(dato),
+            headers:headers
+        });
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+const delReservation =async(id)=>{
+    try {
+        await fetch(`${url}/reservaciones/${id}`,{
+            method:'DELETE',
+            headers:headers
+        });
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+const oneReservation = async(id)=>{
+    try {
+        const response = await fetch(`${url}/reservaciones/one/${id}`)
+        const result = response.json();
+        return result;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+const searchReservation =async(dato)=>{
+    try {
+        const response = await fetch(`${url}/search/reservaciones/${dato}`)
+        const result = response.json();
+        return result;
+    } catch (error) {
+        
     }
 }
 
@@ -101,12 +154,30 @@ const verify = async()=>{
         console.log(error);
     }
 }
+
+const admin = async()=>{
+    try {
+        const dato = await fetch(`${url}/login/rol`,{
+            method: 'POST',
+            headers: headers
+        })
+        return await dato.json();
+    } catch (error) {
+        console.log(error);
+    }
+}
 export {
     login,
+    admin,
     verify,
     register,
     getDeportes,
     addReservacion,
+    delReservation,
+    oneReservation,
+    putReservation,
+    getReservaciones,
+    searchReservation,
     reservacionesUser,
     getDeportesCategoria,
 }

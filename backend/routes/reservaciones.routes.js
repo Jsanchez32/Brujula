@@ -1,5 +1,5 @@
 import express from "express";
-import { getReservacion, delReservation, putReservation, getReservacionUser,addReservation} from "../controllers/reservaciones.controller.js";
+import { getReservacion, delReservation, putReservation, getReservacionUser,addReservation, getOneReservacion} from "../controllers/reservaciones.controller.js";
 import { check } from "express-validator";
 import { validateDocuments } from "../middlewares/validate.documents.js";
 import { isAdminRole } from "../middlewares/validate.role.js";
@@ -15,6 +15,9 @@ router.get("/user",[
     validateJWT,
     validateDocuments
 ],getReservacionUser);
+
+router.get('/one/:id',getOneReservacion);
+
 
 router.post("/",[
     validateJWT,

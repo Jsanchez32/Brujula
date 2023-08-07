@@ -53,7 +53,24 @@
             console.log(error);
         }
     }
+
+    const validateAdmin = async (req,res)=>{
+        try {
+            const { rol } = req.usuarios;
+            if(rol!='admin'){
+                res.status(404).json({
+                    msg: "No es admin"
+                })
+            }
+            res.json({
+                success:true
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }
     export {
         login,  
-        verifyLogin
+        verifyLogin,
+        validateAdmin
     }

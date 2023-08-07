@@ -24,6 +24,28 @@ const getReservacion = async (req,res)=>{
     }
 }
 
+const getOneReservacion = async (req,res)=>{
+    try {
+        const query = {estado:true}
+        const {id} = req.params;
+
+        const [total, reservacion] = await Promise.all([
+            Reservaciones.countDocuments(query),
+            Reservaciones.findById(id)
+                .populate('usuario',['email'])
+        ])
+        res.json({
+            total,
+            reservacion
+        })
+    } catch (error) {
+        res.status(404),
+        res.json({
+            msg: error.message
+        })
+    }
+}
+
 const getReservacionUser = async (req,res)=>{
     try {
         const query = {estado:true}
@@ -46,9 +68,10 @@ const getReservacionUser = async (req,res)=>{
     }
 }
 
+
 const addReservation = async (req, res) => {
     try {
-        const { nombre, telefono, correo, fecha, cantidadPersonas, plan, estado } = req.body;
+        const { nombre, telefono, correo, hora, fecha, cantidadPersonas, plan, estado } = req.body;
         const planPrueba = await Deportes.findOne({ deporte: plan });
         const precioPlan = planPrueba.precio;
         const totalNuevo = cantidadPersonas * precioPlan;
@@ -57,6 +80,7 @@ const addReservation = async (req, res) => {
             nombre,
             telefono,
             correo,
+            hora:hora,
             fecha,
             cantidadPersonas: cantidadPersonas,
             plan,
@@ -104,10 +128,13 @@ const delReservation = async (req,res)=>{
     })
 }
 
+
+
 export {
     getReservacion,
     addReservation,
     delReservation,
     putReservation,
-    getReservacionUser
+    getReservacionUser,
+    getOneReservacion
 }
