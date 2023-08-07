@@ -91,7 +91,7 @@ const addReservation = async (req, res) => {
 
         const reservacion = new Reservaciones(data);
         await reservacion.save();
-        await sendEmail(correo, nombre, fecha, plan);
+        await sendEmail(data);
 
         res.json({
             msg: 'Yes',
