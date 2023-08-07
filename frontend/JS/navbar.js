@@ -8,7 +8,7 @@ async function header (){
     navBar.innerHTML = `
         <div class="logo">
             <a href="../home/home.html">
-                <img src="../img/logo.png" alt="Logo de la marca" >
+                <img src="../img/logo.png" class="home" alt="Logo de la marca" >
             </a>
         </div>
             <nav>
@@ -45,19 +45,27 @@ async function cerrarSesion(e){
         window.location.href='../login/login.html';
     }
 
-    if(e.target.classList.contains('torrentismo')){
-        window.location.href='../deportes/torrentismo.html'
-    }
-    else if(e.target.classList.contains('rafting')){
-        window.location.href='../deportes/rafting.html'
-    }
-    else if(e.target.classList.contains('parapente')){
-        window.location.href='../deportes/parapente.html'
-    }
-    else if(e.target.classList.contains('espeleologia')){
-        window.location.href='../deportes/espeleologia.html'
-    }
-
+    switch (e.target.classList[0]) {
+        case 'torrentismo':
+          window.location.href = '../deportes/torrentismo.html';
+          break;
+        case 'rafting':
+          window.location.href = '../deportes/rafting.html';
+          break;
+        case 'parapente':
+          window.location.href = '../deportes/parapente.html';
+          break;
+        case 'espeleologia':
+          window.location.href = '../deportes/espeleologia.html';
+          break;
+        case 'home':
+          window.location.href = '../home/home.html';
+          break;
+        default:
+        
+        
+          break;
+      }
 
     if(e.target.classList.contains('profile')){
         const response = await admin();

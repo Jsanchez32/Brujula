@@ -48,11 +48,11 @@ const getOneReservacion = async (req,res)=>{
 
 const getReservacionUser = async (req,res)=>{
     try {
-        const query = {estado:true}
+        const query = { estado: true, usuario: req.usuarios._id };
 
         const [total, reservacion] = await Promise.all([
             Reservaciones.countDocuments(query),
-            Reservaciones.find({usuario: req.usuarios._id})
+            Reservaciones.find(query)
                 .populate('usuario',['email'])
         ])
         console.log(req.usuarios._id);

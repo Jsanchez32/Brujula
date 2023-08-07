@@ -45,3 +45,4 @@ async function insertReservacion(e){
       })
     window.location.href = '../reservaciones/profile.html';
 }
+
