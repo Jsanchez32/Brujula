@@ -140,7 +140,7 @@ async function search(){
         const reservaciones = await searchReservation(dato.value)
         contenedor.innerHTML=''
         reservaciones.results.forEach((reservacion)=>{
-            const {total,fecha,plan,} = reservacion
+            const {total,fecha,plan,_id} = reservacion
             contenedor.innerHTML+=`
             <div class="card" style="width: 18rem;">
                 <img src="../img/reservacion.jpg" class="card-img-top" alt="...">
@@ -148,6 +148,10 @@ async function search(){
                 <p class="card-text"><b>Fecha:</b> ${fecha}</p>
                 <p class="card-text"><b>Total:</b> ${total}$</p>
                 <button class="btn btn-warning">Detalles</button>
+                <div class="editUpdate">
+                <button id="${_id}"class="btn btn-danger eliminar">Eliminar</button>
+                <button type="submit" id="${_id}"class="btn btn-danger editar" data-bs-toggle="modal" data-bs-target="#Actualizar">Editar</button>
+                </div>
                 </div>
             </div>
             `
